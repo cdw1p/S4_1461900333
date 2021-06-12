@@ -45,8 +45,8 @@ class PasienController extends Controller
     $this->validate($request, [ 'file' => 'required|mimes:csv,xls,xlsx' ]);
     $file = $request->file('file');
     $nama_file = rand().$file->getClientOriginalName();
-    $file->move('file_siswa', $nama_file);
-    Excel::import(new PasienImport, public_path('/file_siswa/'.$nama_file));
+    $file->move('file_pasien', $nama_file);
+    Excel::import(new PasienImport, public_path('/file_pasien/'.$nama_file));
     return redirect()->route('pasien.index');
   }
 }
